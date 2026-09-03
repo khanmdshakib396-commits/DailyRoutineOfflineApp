@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Daily Routine"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:padding="10dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="আজকের রুটিন"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:paddingTop="20dp"
+            android:paddingBottom="15dp" />
+
+        <CheckBox
+            android:id="@+id/routine1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="সকালে ঘুম থেকে ওঠা"
+            android:textSize="18sp"
+            android:padding="10dp" />
+
+        <CheckBox
+            android:id="@+id/routine2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="সকালের নাস্তা"
+            android:textSize="18sp"
+            android:padding="10dp" />
+
+        <CheckBox
+            android:id="@+id/routine3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="পড়াশোনা / কাজ"
+            android:textSize="18sp"
+            android:padding="10dp" />
+
+        <CheckBox
+            android:id="@+id/routine4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="দুপুরের খাবার"
+            android:textSize="18sp"
+            android:padding="10dp" />
+
+        <CheckBox
+            android:id="@+id/routine5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ব্যায়াম / হাঁটা"
+            android:textSize="18sp"
+            android:padding="10dp" />
+
+        <CheckBox
+            android:id="@+id/routine6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="রাতের খাবার"
+            android:textSize="18sp"
+            android:padding="10dp" />
+
+        <CheckBox
+            android:id="@+id/routine7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ঘুমানোর প্রস্তুতি"
+            android:textSize="18sp"
+            android:padding="10dp" />
+
+    </LinearLayout>
+
+</ScrollView>
