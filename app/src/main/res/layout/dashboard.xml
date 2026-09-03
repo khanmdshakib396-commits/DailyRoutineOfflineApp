@@ -19,13 +19,14 @@
             android:padding="10dp" />
 
         <TextView
+            android:id="@+id/dateText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="আজকের রুটিন"
             android:textSize="22sp"
             android:textStyle="bold"
-            android:paddingTop="20dp"
-            android:paddingBottom="15dp" />
+            android:gravity="center"
+            android:padding="15dp" />
 
         <CheckBox
             android:id="@+id/routine1"
@@ -82,6 +83,14 @@
             android:text="ঘুমানোর প্রস্তুতি"
             android:textSize="18sp"
             android:padding="10dp" />
+
+        <Button
+            android:id="@+id/addRoutineButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="+ Add Routine"
+            android:textSize="18sp"
+            android:layout_marginTop="20dp" />
 
     </LinearLayout>
 
