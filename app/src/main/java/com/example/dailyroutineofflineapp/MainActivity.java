@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "Login Successful!", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(this, "Wrong Username or Password", Toast.LENGTH_SHORT).show();
+                setContentView(R.layout.dashboard);
             }
         });
     }
