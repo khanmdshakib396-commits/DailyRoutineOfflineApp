@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="⚙ Customize"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:padding="15dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="App Theme"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="15dp" />
+
+        <RadioGroup
+            android:id="@+id/themeGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/lightTheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="☀ Light"
+                android:textSize="17sp" />
+
+            <RadioButton
+                android:id="@+id/darkTheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="🌙 Dark"
+                android:textSize="17sp" />
+
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Text Size"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp" />
+
+        <SeekBar
+            android:id="@+id/textSizeBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="20" />
+
+        <TextView
+            android:id="@+id/textSizePreview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Text Preview"
+            android:textSize="18sp"
+            android:padding="10dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button Style"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp" />
+
+        <RadioGroup
+            android:id="@+id/buttonStyleGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/buttonNormal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Normal Button" />
+
+            <RadioButton
+                android:id="@+id/buttonLarge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Large Button" />
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/saveCustomize"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SAVE CUSTOMIZATION"
+            android:textSize="17sp"
+            android:layout_marginTop="25dp" />
+
+        <Button
+            android:id="@+id/resetCustomize"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="RESET TO DEFAULT"
+            android:layout_marginTop="10dp" />
+
+    </LinearLayout>
+
+</ScrollView>
