@@ -23,38 +23,44 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        prefs = getSharedPreferences("DailyRoutineSettings", MODE_PRIVATE);
+        prefs = getSharedPreferences(
+                "DailyRoutineSettings",
+                MODE_PRIVATE
+        );
 
-        applyTheme();
         showLogin();
-    }
-
-    private void applyTheme() {
-        boolean dark = prefs.getBoolean("darkMode", false);
-
-        if (dark) {
-            getWindow().getDecorView().setBackgroundColor(Color.rgb(25, 25, 25));
-        } else {
-            getWindow().getDecorView().setBackgroundColor(Color.WHITE);
-        }
     }
 
     private void showLogin() {
         setContentView(R.layout.activity_main);
 
+        applyScreenStyle();
+
         EditText username = findViewById(R.id.username);
         EditText password = findViewById(R.id.password);
         Button loginButton = findViewById(R.id.loginButton);
+
+        loginButton.setTextSize(getTextSize());
+        applyButtonStyle(loginButton);
 
         loginButton.setOnClickListener(v -> {
 
             String user = username.getText().toString().trim();
             String pass = password.getText().toString();
 
-            if (user.equals("Md Moyen Khan Shakib") && pass.equals("425264")) {
-                Toast.makeText(this, "Login Successful!", Toast.LENGTH_SHORT).show();
+            if (user.equals("Md Moyen Khan Shakib")
+                    && pass.equals("425264")) {
+
+                Toast.makeText(
+                        this,
+                        "Login Successful!",
+                        Toast.LENGTH_SHORT
+                ).show();
+
                 showDashboard();
+
             } else {
+
                 Toast.makeText(
                         this,
                         "Wrong Username or Password",
@@ -67,7 +73,12 @@ public class MainActivity extends AppCompatActivity {
     private void showDashboard() {
         setContentView(R.layout.dashboard);
 
-        Button addRoutineButton = findViewById(R.id.addRoutineButton);
+        applyScreenStyle();
+
+        Button addRoutineButton =
+                findViewById(R.id.addRoutineButton);
+
+        applyButtonStyle(addRoutineButton);
 
         addRoutineButton.setOnClickListener(v -> {
 
@@ -84,9 +95,18 @@ public class MainActivity extends AppCompatActivity {
                                 input.getText().toString().trim();
 
                         if (!routine.isEmpty()) {
+
                             Toast.makeText(
                                     this,
                                     "Routine added: " + routine,
+                                    Toast.LENGTH_SHORT
+                            ).show();
+
+                        } else {
+
+                            Toast.makeText(
+                                    this,
+                                    "Routine name লিখো",
                                     Toast.LENGTH_SHORT
                             ).show();
                         }
@@ -95,31 +115,34 @@ public class MainActivity extends AppCompatActivity {
                     .show();
         });
 
-        // Customize button
-        Button customizeButton = new Button(this);
-        customizeButton.setText("⚙ Customize");
+        // Customize Button
+        Button customizeButton =
+                findViewById(R.id.customizeButton);
 
-        ((android.widget.LinearLayout)
-                ((android.widget.ScrollView)
-                        findViewById(android.R.id.content)
-                        .getRootView())
-                        .getChildAt(0));
+        applyButtonStyle(customizeButton);
 
-        customizeButton.setOnClickListener(v -> showCustomize());
+        customizeButton.setOnClickListener(v -> {
+            showCustomize();
+        });
     }
 
     private void showCustomize() {
+
         setContentView(R.layout.customize);
 
-        RadioGroup themeGroup = findViewById(R.id.themeGroup);
-        RadioButton lightTheme = findViewById(R.id.lightTheme);
-        RadioButton darkTheme = findViewById(R.id.darkTheme);
+        applyScreenStyle();
 
-        SeekBar textSizeBar = findViewById(R.id.textSizeBar);
-        TextView preview = findViewById(R.id.textSizePreview);
+        RadioButton lightTheme =
+                findViewById(R.id.lightTheme);
 
-        RadioGroup buttonStyleGroup =
-                findViewById(R.id.buttonStyleGroup);
+        RadioButton darkTheme =
+                findViewById(R.id.darkTheme);
+
+        SeekBar textSizeBar =
+                findViewById(R.id.textSizeBar);
+
+        TextView preview =
+                findViewById(R.id.textSizePreview);
 
         RadioButton buttonNormal =
                 findViewById(R.id.buttonNormal);
@@ -127,10 +150,15 @@ public class MainActivity extends AppCompatActivity {
         RadioButton buttonLarge =
                 findViewById(R.id.buttonLarge);
 
-        Button save = findViewById(R.id.saveCustomize);
-        Button reset = findViewById(R.id.resetCustomize);
+        Button save =
+                findViewById(R.id.saveCustomize);
 
-        boolean dark = prefs.getBoolean("darkMode", false);
+        Button reset =
+                findViewById(R.id.resetCustomize);
+
+        // Current Theme
+        boolean dark =
+                prefs.getBoolean("darkMode", false);
 
         if (dark) {
             darkTheme.setChecked(true);
@@ -138,18 +166,24 @@ public class MainActivity extends AppCompatActivity {
             lightTheme.setChecked(true);
         }
 
-        int savedSize = prefs.getInt("textSize", 18);
+        // Current Text Size
+        int savedSize =
+                prefs.getInt("textSize", 18);
+
         textSizeBar.setProgress(savedSize - 10);
         preview.setTextSize(savedSize);
 
-        buttonNormal.setChecked(
-                !prefs.getBoolean("largeButton", false)
-        );
+        // Current Button Style
+        boolean largeButton =
+                prefs.getBoolean("largeButton", false);
 
-        buttonLarge.setChecked(
-                prefs.getBoolean("largeButton", false)
-        );
+        if (largeButton) {
+            buttonLarge.setChecked(true);
+        } else {
+            buttonNormal.setChecked(true);
+        }
 
+        // Text Size Preview
         textSizeBar.setOnSeekBarChangeListener(
                 new SeekBar.OnSeekBarChangeListener() {
 
@@ -165,23 +199,31 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onStartTrackingTouch(
-                            SeekBar seekBar) {}
+                            SeekBar seekBar) {
+                    }
 
                     @Override
                     public void onStopTrackingTouch(
-                            SeekBar seekBar) {}
-                });
+                            SeekBar seekBar) {
+                    }
+                }
+        );
 
+        // SAVE
         save.setOnClickListener(v -> {
 
-            boolean darkMode = darkTheme.isChecked();
-            boolean largeButton = buttonLarge.isChecked();
+            boolean darkMode =
+                    darkTheme.isChecked();
 
-            int textSize = textSizeBar.getProgress() + 10;
+            boolean large =
+                    buttonLarge.isChecked();
+
+            int textSize =
+                    textSizeBar.getProgress() + 10;
 
             prefs.edit()
                     .putBoolean("darkMode", darkMode)
-                    .putBoolean("largeButton", largeButton)
+                    .putBoolean("largeButton", large)
                     .putInt("textSize", textSize)
                     .apply();
 
@@ -191,10 +233,10 @@ public class MainActivity extends AppCompatActivity {
                     Toast.LENGTH_SHORT
             ).show();
 
-            applyTheme();
             showDashboard();
         });
 
+        // RESET
         reset.setOnClickListener(v -> {
 
             prefs.edit().clear().apply();
@@ -205,8 +247,74 @@ public class MainActivity extends AppCompatActivity {
                     Toast.LENGTH_SHORT
             ).show();
 
-            applyTheme();
             showDashboard();
         });
+    }
+
+    private void applyScreenStyle() {
+
+        boolean dark =
+                prefs.getBoolean("darkMode", false);
+
+        if (dark) {
+
+            getWindow()
+                    .getDecorView()
+                    .setBackgroundColor(
+                            Color.rgb(25, 25, 25)
+                    );
+
+        } else {
+
+            getWindow()
+                    .getDecorView()
+                    .setBackgroundColor(
+                            Color.WHITE
+                    );
+        }
+    }
+
+    private int getTextSize() {
+
+        return prefs.getInt(
+                "textSize",
+                18
+        );
+    }
+
+    private void applyButtonStyle(Button button) {
+
+        boolean large =
+                prefs.getBoolean(
+                        "largeButton",
+                        false
+                );
+
+        if (large) {
+
+            button.setTextSize(
+                    getTextSize() + 2
+            );
+
+            button.setPadding(
+                    20,
+                    25,
+                    20,
+                    25
+            );
+
+        } else {
+
+            button.setTextSize(
+                    getTextSize()
+            );
+
+            button.setPadding(
+                    15,
+                    15,
+                    15,
+                    15
+            );
+        }
     }
 }
